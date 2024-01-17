@@ -29,6 +29,13 @@ class ViewController: UIViewController {
                    productView.heightAnchor.constraint(equalToConstant: 240)
                ])
            }
+
+
        }
+
+    override func viewDidAppear(_ animated: Bool) {
+        let tableController = TableController()
+            present(tableController, animated: true)
+    }
 }
 

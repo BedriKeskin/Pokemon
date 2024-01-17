@@ -12,6 +12,7 @@ class PokemonTableViewCell: UITableViewCell {
     @IBOutlet var Name: UILabel!
     @IBOutlet var Info: UILabel!
     
+    static let cellIdentifier = "cell";
 
     override func awakeFromNib() {
         super.awakeFromNib()
