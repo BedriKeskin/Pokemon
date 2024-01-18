@@ -65,9 +65,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="Info" destination="tu2-KK-PNc" id="mcO-jr-nmm"/>
-                <outlet property="Name" destination="N7n-Nh-6uS" id="Ttz-li-oRe"/>
-                <outlet property="Picture" destination="qI4-G9-Egt" id="jUW-J8-Ia1"/>
+                <outlet property="info" destination="tu2-KK-PNc" id="mcO-jr-nmm"/>
+                <outlet property="name" destination="N7n-Nh-6uS" id="Ttz-li-oRe"/>
+                <outlet property="picture" destination="qI4-G9-Egt" id="jUW-J8-Ia1"/>
             </connections>
             <point key="canvasLocation" x="-102" y="-11"/>
         </tableViewCell>

@@ -1,5 +1,5 @@
 //
-//  PokemonTableViewCell.swift
+//  TableViewCell.swift
 //  Pokemon
 //
 //  Created by Bedri Keskin on 17.01.2024.
@@ -8,9 +8,9 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-    @IBOutlet var Picture: UIImageView!
-    @IBOutlet var Name: UILabel!
-    @IBOutlet var Info: UILabel!
+    @IBOutlet var picture: UIImageView!
+    @IBOutlet var name: UILabel!
+    @IBOutlet var info: UILabel!
     
     static let cellIdentifier = "cellIdentifier";
 

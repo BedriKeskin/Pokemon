@@ -31,8 +31,8 @@ class ViewController: UIViewController {
 
             productView.translatesAutoresizingMaskIntoConstraints = false
             //productView.Picture.image = UIImage(named: "iPhone 11")
-            productView.Name.text = "iPhone 11"
-            productView.Info.text = "Kullanım konusunda hiçbir karışıklığa yer vermeden tonlarca yetenekle donatılmış çığır açıcı üçlü kamera sistemi. Pil ömrü konusunda eşi benzeri görülmemiş büyüklükte bir adım."
+            productView.name.text = "iPhone 11"
+            productView.info.text = "Kullanım konusunda hiçbir karışıklığa yer vermeden tonlarca yetenekle donatılmış çığır açıcı üçlü kamera sistemi. Pil ömrü konusunda eşi benzeri görülmemiş büyüklükte bir adım."
 
             NSLayoutConstraint.activate([
                 productView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
