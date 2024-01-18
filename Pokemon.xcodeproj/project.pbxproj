@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A0CF6132B59D47400084880 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CF6112B59D47400084880 /* TableViewController.swift */; };
 		0A0CF6142B59D47400084880 /* TableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A0CF6122B59D47400084880 /* TableViewController.xib */; };
-		0A3DFC2F2B588B5F00F64E4D /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3DFC2E2B588B5E00F64E4D /* TableController.swift */; };
 		0A85EC362B570F3400D18991 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A85EC352B570F3400D18991 /* AppDelegate.swift */; };
 		0A85EC382B570F3400D18991 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A85EC372B570F3400D18991 /* SceneDelegate.swift */; };
 		0A85EC3A2B570F3400D18991 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A85EC392B570F3400D18991 /* ViewController.swift */; };
@@ -47,7 +46,6 @@
 		05975F83BB4E55D4F97AAF64 /* Pods-Pokemon-PokemonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokemon-PokemonUITests.debug.xcconfig"; path = "Target Support Files/Pods-Pokemon-PokemonUITests/Pods-Pokemon-PokemonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		0A0CF6112B59D47400084880 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		0A0CF6122B59D47400084880 /* TableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewController.xib; sourceTree = "<group>"; };
-		0A3DFC2E2B588B5E00F64E4D /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		0A85EC322B570F3400D18991 /* Pokemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A85EC352B570F3400D18991 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A85EC372B570F3400D18991 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 				0A85EC352B570F3400D18991 /* AppDelegate.swift */,
 				0A85EC372B570F3400D18991 /* SceneDelegate.swift */,
 				0A85EC392B570F3400D18991 /* ViewController.swift */,
-				0A3DFC2E2B588B5E00F64E4D /* TableController.swift */,
 				0A0CF6112B59D47400084880 /* TableViewController.swift */,
 				0A0CF6122B59D47400084880 /* TableViewController.xib */,
 				0AA5ECDB2B57475000CE2B17 /* TableViewCell.swift */,
@@ -391,7 +388,6 @@
 				0A0CF6132B59D47400084880 /* TableViewController.swift in Sources */,
 				0AA5ECDD2B57475000CE2B17 /* TableViewCell.swift in Sources */,
 				0A85EC362B570F3400D18991 /* AppDelegate.swift in Sources */,
-				0A3DFC2F2B588B5F00F64E4D /* TableController.swift in Sources */,
 				0A85EC382B570F3400D18991 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

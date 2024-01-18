@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     }
 
     private func showTable() {
-        let tableController = TableController()
+        let tableController = TableViewController()
         present(tableController, animated: true)
     }
 
