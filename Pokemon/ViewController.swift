@@ -43,13 +43,27 @@ class ViewController: UIViewController {
                 productView.heightAnchor.constraint(equalToConstant: 240)
             ])
         }
-
-
     }
 
     private func showTable() {
         let tableController = TableViewController()
         present(tableController, animated: true)
+    }
+
+    private func showTable2() {
+        if let tableView = Bundle.main.loadNibNamed("\(TableViewController.self)", owner: self, options: nil)?.first as? UITableView {
+            self.view.addSubview(tableView)
+
+
+            tableView.translatesAutoresizingMaskIntoConstraints = false
+
+            NSLayoutConstraint.activate([
+                tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                tableView.centerYAnchor.constraint(equalTo: view.topAnchor, constant: -200),
+                tableView.widthAnchor.constraint(equalToConstant: 500),
+                tableView.heightAnchor.constraint(equalToConstant: 500)
+            ])
+        }
     }
 
     private func pokemonList(completion: @escaping(Result<[Pokemon], Error>) -> Void) {

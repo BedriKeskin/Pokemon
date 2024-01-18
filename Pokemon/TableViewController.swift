@@ -9,24 +9,18 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        // Initialization code
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let nib = UINib(nibName: "TableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: TableViewCell.cellIdentifier)
+//        let nib = UINib(nibName: "TableViewCell", bundle: nil)
+//        tableView.register(nib, forCellReuseIdentifier: TableViewCell.cellIdentifier)
 
         tableView.separatorStyle = .none
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
