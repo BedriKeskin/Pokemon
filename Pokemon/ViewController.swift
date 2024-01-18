@@ -20,16 +20,13 @@ class ViewController: UIViewController {
             switch rslt {
             case .success(let response):
                 pokemons = response
-
-                for pokemon in pokemons {
-                    print("pokemon \(pokemon.name)")
-                }
-            case .failure(_):
-                print("Check Internet Connection")
+                for pokemon in pokemons {print("pokemon \(pokemon.name)")}
+            case .failure(let error):
+                print("Pokemons could not be fetched: \(error)")
             }
         }
 
-        if let productView = Bundle.main.loadNibNamed("\(PokemonTableViewCell.self)", owner: self, options: nil)?.first as? PokemonTableViewCell {
+        if let productView = Bundle.main.loadNibNamed("\(TableViewCell.self)", owner: self, options: nil)?.first as? TableViewCell {
             self.view.addSubview(productView)
 
             productView.translatesAutoresizingMaskIntoConstraints = false
