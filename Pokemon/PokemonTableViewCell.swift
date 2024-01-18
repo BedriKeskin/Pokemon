@@ -12,7 +12,7 @@ class PokemonTableViewCell: UITableViewCell {
     @IBOutlet var Name: UILabel!
     @IBOutlet var Info: UILabel!
     
-    static let cellIdentifier = "cell";
+    static let cellIdentifier = "cellIdentifier";
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +24,4 @@ class PokemonTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }
