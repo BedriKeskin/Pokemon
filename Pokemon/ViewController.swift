@@ -13,14 +13,12 @@ var pokemons: Array<Pokemon> = []
 class ViewController: UIViewController {
     fileprivate let serverURL = "https://gist.githubusercontent.com/DavidCorrado/8912aa29d7c4a5fbf03993b32916d601/raw/681ef0b793ab444f2d81f04f605037fb44814125/pokemon.json"
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        userList() { rslt in
+        pokemonList() { rslt in
             switch rslt {
             case .success(let response):
-
                 pokemons = response
 
                 for pokemon in pokemons {
@@ -53,25 +51,21 @@ class ViewController: UIViewController {
         present(tableController, animated: true)
     }
 
-    private func userList(completion: @escaping(Result<[Pokemon], Error>) -> Void) {
+    private func pokemonList(completion: @escaping(Result<[Pokemon], Error>) -> Void) {
         guard let url = URL(string: serverURL) else { return }
 
         var request = URLRequest(url: (url))
         request.httpMethod = "GET"
 
-        let task: Void = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        let _: Void = URLSession.shared.dataTask(with: request) {(data, response, error) in
             if let data = data, error == nil {
-                do
-                {
+                do {
                     let rslt = try JSONDecoder().decode([Pokemon].self, from: data)
                     completion(.success(rslt))
-                }
-                catch
-                {
+                } catch {
                     completion(.failure(error))
                 }
-            }
-            else {
+            } else {
                 completion(.failure(error! as NSError))
             }
         }.resume()
