@@ -2,13 +2,18 @@
 //  TableViewController.swift
 //  Pokemon
 //
-//  Created by Tiga on 19.01.2024.
+//  Created by Bedri Keskin on 19.01.2024.
 //
 
 import UIKit
 
 class TableViewController: UITableViewController {
-        
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

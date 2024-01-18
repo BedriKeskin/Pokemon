@@ -17,12 +17,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         pokemonList() { rslt in
-            switch rslt {
-            case .success(let response):
-                pokemons = response
-                for pokemon in pokemons {print("pokemon \(pokemon.name)")}
-            case .failure(let error):
-                print("Pokemons could not be fetched: \(error)")
+            DispatchQueue.main.async {
+                switch rslt {
+                case .success(let response):
+                    pokemons = response
+                    self.showTable()
+                case .failure(let error):
+                    print("Pokemons could not be fetched: \(error)")
+                }
             }
         }
 
@@ -32,7 +34,7 @@ class ViewController: UIViewController {
             productView.translatesAutoresizingMaskIntoConstraints = false
             //productView.Picture.image = UIImage(named: "iPhone 11")
             productView.name.text = "iPhone 11"
-            productView.info.text = "Kullanım konusunda hiçbir karışıklığa yer vermeden tonlarca yetenekle donatılmış çığır açıcı üçlü kamera sistemi. Pil ömrü konusunda eşi benzeri görülmemiş büyüklükte bir adım."
+            productView.info.text = "Kullanım konu."
 
             NSLayoutConstraint.activate([
                 productView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -41,9 +43,11 @@ class ViewController: UIViewController {
                 productView.heightAnchor.constraint(equalToConstant: 240)
             ])
         }
+
+
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    private func showTable() {
         let tableController = TableController()
         present(tableController, animated: true)
     }
