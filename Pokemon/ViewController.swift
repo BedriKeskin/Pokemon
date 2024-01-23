@@ -11,6 +11,10 @@ import Foundation
 var pokemons: Array<Pokemon> = []
 
 class ViewController: UIViewController {
+    lazy var tableViewController: TableViewController = {
+        TableViewController()
+        }()
+
     fileprivate let serverURL = "https://gist.githubusercontent.com/DavidCorrado/8912aa29d7c4a5fbf03993b32916d601/raw/681ef0b793ab444f2d81f04f605037fb44814125/pokemon.json"
 
     override func viewDidLoad() {
@@ -27,42 +31,19 @@ class ViewController: UIViewController {
                 }
             }
         }
-
-        if let productView = Bundle.main.loadNibNamed("\(TableViewCell.self)", owner: self, options: nil)?.first as? TableViewCell {
-            self.view.addSubview(productView)
-
-            productView.translatesAutoresizingMaskIntoConstraints = false
-            //productView.Picture.image = UIImage(named: "iPhone 11")
-            productView.name.text = "iPhone 11"
-            productView.info.text = "Kullanım konu."
-
-            NSLayoutConstraint.activate([
-                productView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                productView.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 200),
-                productView.widthAnchor.constraint(equalToConstant: 414),
-                productView.heightAnchor.constraint(equalToConstant: 240)
-            ])
-        }
     }
 
     private func showTable() {
-        let tableController = TableViewController()
-        present(tableController, animated: true)
-    }
+        print("showTableshowTable")
 
-    private func showTable2() {
+//        let tableController = TableViewController()
+////        tableController.reloadInputViews()
+//        present(tableController, animated: true)
+
         if let tableView = Bundle.main.loadNibNamed("\(TableViewController.self)", owner: self, options: nil)?.first as? UITableView {
-            self.view.addSubview(tableView)
+            tableView.dataSource = tableViewController.myTableViewDataSource
 
 
-            tableView.translatesAutoresizingMaskIntoConstraints = false
-
-            NSLayoutConstraint.activate([
-                tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                tableView.centerYAnchor.constraint(equalTo: view.topAnchor, constant: -200),
-                tableView.widthAnchor.constraint(equalToConstant: 500),
-                tableView.heightAnchor.constraint(equalToConstant: 500)
-            ])
         }
     }
 

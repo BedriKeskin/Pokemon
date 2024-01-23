@@ -14,8 +14,21 @@ class TableViewController: UITableViewController {
 //        // Initialization code
 //    }
 
+    lazy var myTableViewDataSource: MyTableViewDataSource = {
+            MyTableViewDataSource()
+        }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        print("viewDidLoadviewDidLoadviewDidLoad")
+
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellIdentifier)
+        tableView.dataSource = myTableViewDataSource
+
+
+//        tableView.delegate = self
+//        tableView.dataSource = self
 
 //        let nib = UINib(nibName: "TableViewCell", bundle: nil)
 //        tableView.register(nib, forCellReuseIdentifier: TableViewCell.cellIdentifier)
@@ -24,25 +37,6 @@ class TableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pokemons.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
-
-        cell.picture.imageFromUrl(urlString: pokemons[indexPath.row].imageUrl)
-        cell.name.text = pokemons[indexPath.row].name
-        cell.info.text = pokemons[indexPath.row].description
-
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 130
-      }
 
     /*
     // Override to support conditional editing of the table view.
@@ -89,6 +83,31 @@ class TableViewController: UITableViewController {
     }
     */
     
+}
+
+final class MyTableViewDataSource: NSObject, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("ccccccccc \(pokemons.count)")
+        return pokemons.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("ddddddd")
+
+        let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
+
+        cell.picture.imageFromUrl(urlString: pokemons[indexPath.row].imageUrl)
+        cell.name.text = pokemons[indexPath.row].name
+        cell.info.text = pokemons[indexPath.row].description
+        cell.backgroundColor = UIColor.cyan
+
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 1030
+      }
 }
 
 extension UIImageView {
