@@ -11,7 +11,7 @@ import Foundation
 var pokemons: Array<Pokemon> = []
 
 class ViewController: UIViewController {
-    lazy var tableViewController: TableViewController = {
+     lazy var tableViewController: TableViewController = {
         TableViewController()
         }()
 
@@ -36,14 +36,9 @@ class ViewController: UIViewController {
     private func showTable() {
         print("showTableshowTable")
 
-//        let tableController = TableViewController()
-////        tableController.reloadInputViews()
-//        present(tableController, animated: true)
-
         if let tableView = Bundle.main.loadNibNamed("\(TableViewController.self)", owner: self, options: nil)?.first as? UITableView {
             tableView.dataSource = tableViewController.myTableViewDataSource
-
-
+            tableView.delegate = tableViewController.myDelegate
         }
     }
 
@@ -65,6 +60,42 @@ class ViewController: UIViewController {
                 completion(.failure(error! as NSError))
             }
         }.resume()
+    }
+}
+
+extension ViewController: CustomDelegate {    
+    func didSelectItem(record: String) {
+        print("222222")
+
+        if let details = Bundle.main.loadNibNamed("\(DetailsViewController.self)", owner: self, options: nil)?.first as? UIView {
+
+            // Register Nib
+            let newViewController = DetailsViewController(nibName: "\(DetailsViewController.self)", bundle: nil)
+            newViewController.pokemon = record
+
+            print("33333xx \(newViewController)")
+
+            let viewController = self // I had viewController passed in as a function,
+                                      // but otherwise you can do this
+
+            // Present the view controller
+            let currentViewController = UIApplication.shared.keyWindow?.rootViewController
+//            currentViewController?.dismiss(animated: true, completion: nil)
+
+            if viewController.presentedViewController == nil {
+                print("444444 if \(viewController)")
+                newViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+
+                currentViewController?.present(newViewController, animated: true, completion: nil)
+            } else {
+                print("444444 else \(viewController)")
+
+                viewController.present(newViewController, animated: true, completion: nil)
+            }
+
+        } else {
+            print("111111")
+        }
     }
 }
 
