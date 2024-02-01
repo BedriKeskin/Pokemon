@@ -30,7 +30,7 @@ final class MyTableViewDelegate: NSObject, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("wwww \(indexPath)")
-        let record = pokemons[indexPath.row].name
+        let record = pokemons[indexPath.row]
         print("wwww record \(record)")
 
         delegate!.didSelectItem(record: record)
@@ -39,16 +39,16 @@ final class MyTableViewDelegate: NSObject, UITableViewDelegate {
 
 
 protocol CustomDelegate: AnyObject {
-    func didSelectItem(record: String)
+    func didSelectItem(record: Pokemon)
 }
 
-final class MyTableViewDataSource: NSObject, UITableViewDataSource, CustomDelegate {
-    weak var delegate: CustomDelegate?
+final class MyTableViewDataSource: NSObject, UITableViewDataSource {
+//    weak var delegate: CustomDelegate?
 
-    func didSelectItem(record: String) {
-        print("6666")
-        delegate?.didSelectItem(record: record)
-    }
+//    func didSelectItem(record: String) {
+//        print("6666")
+//        delegate?.didSelectItem(record: record)
+//    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pokemons.count
@@ -57,7 +57,7 @@ final class MyTableViewDataSource: NSObject, UITableViewDataSource, CustomDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
 
-        cell.delegate = self
+//        cell.delegate = self
 
         cell.picture.imageFromUrl(urlString: pokemons[indexPath.row].imageUrl)
         cell.name.text = pokemons[indexPath.row].name

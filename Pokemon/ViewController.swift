@@ -64,10 +64,9 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: CustomDelegate {    
-    func didSelectItem(record: String) {
+    func didSelectItem(record: Pokemon) {
         print("222222")
 
-        if let details = Bundle.main.loadNibNamed("\(DetailsViewController.self)", owner: self, options: nil)?.first as? UIView {
 
             // Register Nib
             let newViewController = DetailsViewController(nibName: "\(DetailsViewController.self)", bundle: nil)
@@ -82,20 +81,12 @@ extension ViewController: CustomDelegate {
             let currentViewController = UIApplication.shared.keyWindow?.rootViewController
 //            currentViewController?.dismiss(animated: true, completion: nil)
 
-            if viewController.presentedViewController == nil {
                 print("444444 if \(viewController)")
                 newViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
 
                 currentViewController?.present(newViewController, animated: true, completion: nil)
-            } else {
-                print("444444 else \(viewController)")
 
-                viewController.present(newViewController, animated: true, completion: nil)
-            }
 
-        } else {
-            print("111111")
-        }
     }
 }
 

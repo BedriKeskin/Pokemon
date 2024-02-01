@@ -28,10 +28,10 @@ final class TableViewCell: UITableViewCell {
 //    }
 }
 
-extension TableViewCell: CustomDelegate {
-    func didSelectItem(record: String) {
-        print("5555")
-
-        delegate?.didSelectItem(record: record)
-    }
-}
+//extension TableViewCell: CustomDelegate {
+//    func didSelectItem(record: String) {
+//        print("5555")
+//
+//        delegate?.didSelectItem(record: record)
+//    }
+//}

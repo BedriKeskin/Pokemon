@@ -9,7 +9,7 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
-    var pokemon: String? = nil
+    var pokemon: Pokemon? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
