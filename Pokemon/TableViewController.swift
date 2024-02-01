@@ -43,7 +43,7 @@ final class MyTableViewDataSource: NSObject, UITableViewDataSource {
 
         cell.picture.imageFromUrl(urlString: pokemons[indexPath.row].imageUrl)
         cell.name.text = pokemons[indexPath.row].name
-        cell.info.text = pokemons[indexPath.row].description
+        cell.info.text = pokemons[indexPath.row].info
         cell.backgroundColor = UIColor.cyan
 
         return cell

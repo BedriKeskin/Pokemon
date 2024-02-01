@@ -17,6 +17,7 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
 
         Image.imageFromUrl(urlString: pokemon!.imageUrl)
-        Info.text = pokemon?.description
+//        Image.image = UIImage(data: (pokemon?.imageData)!)
+        Info.text = pokemon?.info
     }
 }
