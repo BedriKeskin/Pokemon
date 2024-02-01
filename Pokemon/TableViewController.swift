@@ -16,48 +16,30 @@ class TableViewController: UITableViewController {
     lazy var myDelegate: MyTableViewDelegate = {
         MyTableViewDelegate()
     }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
 }
 
 final class MyTableViewDelegate: NSObject, UITableViewDelegate {
-     var delegate: (CustomDelegate)? = {
+    var delegate: (CustomDelegate)? = {
         ViewController()
     }()
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("wwww \(indexPath)")
         let record = pokemons[indexPath.row]
-        print("wwww record \(record)")
-
         delegate!.didSelectItem(record: record)
     }
 }
-
 
 protocol CustomDelegate: AnyObject {
     func didSelectItem(record: Pokemon)
 }
 
 final class MyTableViewDataSource: NSObject, UITableViewDataSource {
-//    weak var delegate: CustomDelegate?
-
-//    func didSelectItem(record: String) {
-//        print("6666")
-//        delegate?.didSelectItem(record: record)
-//    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pokemons.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
-
-//        cell.delegate = self
 
         cell.picture.imageFromUrl(urlString: pokemons[indexPath.row].imageUrl)
         cell.name.text = pokemons[indexPath.row].name
@@ -73,7 +55,6 @@ extension UIImageView {
         if let url = URL(string: urlString) {
             let _: Void = URLSession.shared.dataTask(with: url) { data, response, error in
                 guard let data = data, error == nil else { return }
-
                 DispatchQueue.main.async {
                     self.image = UIImage(data: data)
                 }

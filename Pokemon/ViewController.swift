@@ -34,8 +34,6 @@ class ViewController: UIViewController {
     }
 
     private func showTable() {
-        print("showTableshowTable")
-
         if let tableView = Bundle.main.loadNibNamed("\(TableViewController.self)", owner: self, options: nil)?.first as? UITableView {
             tableView.dataSource = tableViewController.myTableViewDataSource
             tableView.delegate = tableViewController.myDelegate
@@ -65,14 +63,11 @@ class ViewController: UIViewController {
 
 extension ViewController: CustomDelegate {
     func didSelectItem(record: Pokemon) {
-        let newViewController = DetailsViewController(nibName: "\(DetailsViewController.self)", bundle: nil)
-        newViewController.pokemon = record
-
+        let detailsViewController = DetailsViewController(nibName: "\(DetailsViewController.self)", bundle: nil)
+        detailsViewController.pokemon = record
         let currentViewController = UIApplication.shared.keyWindow?.rootViewController
-
-        newViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-
-        currentViewController?.present(newViewController, animated: true, completion: nil)
+        detailsViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+        currentViewController?.present(detailsViewController, animated: true, completion: nil)
     }
 }
 
@@ -81,11 +76,4 @@ struct Pokemon: Decodable {
     let name: String
     let description: String
     let imageUrl: String
-
-    init(id: Int8, name: String, description: String, imageUrl: String) {
-        self.id = id
-        self.name = name
-        self.description = description
-        self.imageUrl = imageUrl
-    }
 }

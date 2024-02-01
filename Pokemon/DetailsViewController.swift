@@ -18,12 +18,5 @@ class DetailsViewController: UIViewController {
 
         Image.imageFromUrl(urlString: pokemon!.imageUrl)
         Info.text = pokemon?.description
-
-
-
-
     }
-
-
-
 }
