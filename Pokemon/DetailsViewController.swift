@@ -8,13 +8,18 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-
+    @IBOutlet var Image: UIImageView!
+    @IBOutlet var Info: UILabel!
+    
     var pokemon: Pokemon? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("zzzzzz DetailsViewController \(String(describing: pokemon))")
+        Image.imageFromUrl(urlString: pokemon!.imageUrl)
+        Info.text = pokemon?.description
+
+
 
 
     }

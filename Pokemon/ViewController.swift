@@ -11,9 +11,9 @@ import Foundation
 var pokemons: Array<Pokemon> = []
 
 class ViewController: UIViewController {
-     lazy var tableViewController: TableViewController = {
+    lazy var tableViewController: TableViewController = {
         TableViewController()
-        }()
+    }()
 
     fileprivate let serverURL = "https://gist.githubusercontent.com/DavidCorrado/8912aa29d7c4a5fbf03993b32916d601/raw/681ef0b793ab444f2d81f04f605037fb44814125/pokemon.json"
 
@@ -63,30 +63,16 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: CustomDelegate {    
+extension ViewController: CustomDelegate {
     func didSelectItem(record: Pokemon) {
-        print("222222")
+        let newViewController = DetailsViewController(nibName: "\(DetailsViewController.self)", bundle: nil)
+        newViewController.pokemon = record
 
+        let currentViewController = UIApplication.shared.keyWindow?.rootViewController
 
-            // Register Nib
-            let newViewController = DetailsViewController(nibName: "\(DetailsViewController.self)", bundle: nil)
-            newViewController.pokemon = record
+        newViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
 
-            print("33333xx \(newViewController)")
-
-            let viewController = self // I had viewController passed in as a function,
-                                      // but otherwise you can do this
-
-            // Present the view controller
-            let currentViewController = UIApplication.shared.keyWindow?.rootViewController
-//            currentViewController?.dismiss(animated: true, completion: nil)
-
-                print("444444 if \(viewController)")
-                newViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-
-                currentViewController?.present(newViewController, animated: true, completion: nil)
-
-
+        currentViewController?.present(newViewController, animated: true, completion: nil)
     }
 }
 
