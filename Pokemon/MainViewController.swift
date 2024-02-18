@@ -10,7 +10,7 @@ import Foundation
 
 var pokemons: Array<Pokemon> = []
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     lazy var tableViewController: TableViewController = {
         TableViewController()
     }()
@@ -61,7 +61,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: CustomDelegate {
+extension MainViewController: CustomDelegate {
     func didSelectItem(record: Pokemon) {
         let detailsViewController = DetailsViewController(nibName: "\(DetailsViewController.self)", bundle: nil)
         detailsViewController.pokemon = record
