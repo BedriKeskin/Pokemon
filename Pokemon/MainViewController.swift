@@ -17,8 +17,10 @@ class MainViewController: UIViewController {
 
     fileprivate let serverURL = "https://gist.githubusercontent.com/DavidCorrado/8912aa29d7c4a5fbf03993b32916d601/raw/681ef0b793ab444f2d81f04f605037fb44814125/pokemon.json"
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("MainViewController açıldı.")
 
         pokemonList() { rslt in
             DispatchQueue.main.async {
@@ -41,6 +43,8 @@ class MainViewController: UIViewController {
     }
 
     private func pokemonList(completion: @escaping(Result<[Pokemon], Error>) -> Void) {
+        print("pokemonList")
+
         guard let url = URL(string: serverURL) else { return }
 
         var request = URLRequest(url: (url))
@@ -59,15 +63,46 @@ class MainViewController: UIViewController {
             }
         }.resume()
     }
+
+    func getTopMostViewController() -> UIViewController? {
+        var topMostViewController = UIApplication.shared.keyWindow?.rootViewController
+
+        while let presentedViewController = topMostViewController?.presentedViewController {
+            topMostViewController = presentedViewController
+        }
+
+        return topMostViewController
+    }
 }
 
 extension MainViewController: CustomDelegate {
     func didSelectItem(record: Pokemon) {
+        print("didSelectItem \(record.name)")
         let detailsViewController = DetailsViewController(nibName: "\(DetailsViewController.self)", bundle: nil)
         detailsViewController.pokemon = record
-        let currentViewController = UIApplication.shared.keyWindow?.rootViewController
         detailsViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-        currentViewController?.present(detailsViewController, animated: true, completion: nil)
+//        self.present(detailsViewController, animated: true, completion: nil)
+
+
+
+        DispatchQueue.main.async {
+            self.getTopMostViewController()?.present(detailsViewController, animated: true, completion: nil)
+        }
+
+        //        self.show(detailsViewController, sender: nil)
+
+//        let navController = UINavigationController(rootViewController: detailsViewController)
+//        navController.pushViewController(detailsViewController, animated: false)
+
+        //        self.navigationController = UINavigationController()
+//        navigationController!.pushViewController(detailsViewController, animated: true)
+
+        //        let currentViewController = UIApplication.shared.keyWindow?.rootViewController
+        ////        currentViewController?.present(detailsViewController, animated: true, completion: nil)
+        //        currentViewController?.navigationController!.pushViewController(detailsViewController, animated: true)
+
+
+
     }
 }
 

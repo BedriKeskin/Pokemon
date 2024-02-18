@@ -20,7 +20,7 @@ class TableViewController: UITableViewController {
 
 final class MyTableViewDelegate: NSObject, UITableViewDelegate {
     var delegate: (CustomDelegate)? = {
-        ViewController()
+        MainViewController()
     }()
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

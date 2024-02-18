@@ -16,8 +16,15 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Image.imageFromUrl(urlString: pokemon!.imageUrl)
-//        Image.image = UIImage(data: (pokemon?.imageData)!)
-        Info.text = pokemon?.info
+        print("DetailsViewController açıldı")
+
+        if let pokemon = pokemon {
+
+
+            Image.imageFromUrl(urlString: pokemon.imageUrl)
+    //        Image.image = UIImage(data: (pokemon?.imageData)!)
+            Info.text = pokemon.info
+        }
+
     }
 }
