@@ -19,16 +19,15 @@ class MainViewController: UIViewController {
             self.tableView = tableView
             self.tableView.dataSource = self
             self.tableView.delegate = self
-            self.tableView.reloadData()
         }
 
         initViewModel()
     }
 
-    func initViewModel(){
-                dataViewModel.reloadTableView = {
-                    DispatchQueue.main.async { self.tableView.reloadData() }
-                }
+    func initViewModel() {
+        dataViewModel.reloadTableView = {
+            DispatchQueue.main.async { self.tableView.reloadData() }
+        }
         //        dataViewModel.showError = {
         //            DispatchQueue.main.async { self.showAlert("Ups, something went wrong.") }
         //        }
@@ -40,14 +39,6 @@ class MainViewController: UIViewController {
         //        }
         dataViewModel.getData()
     }
-
-    //    override func viewDidAppear(_ animated: Bool) {
-    //        super.viewDidAppear(animated)
-    //        print("viewDidAppear MainViewController açıldı.")
-    //
-    //    }
-
-
 
     func getTopMostViewController() -> UIViewController? {
         var topMostViewController = UIApplication.shared.keyWindow?.rootViewController
@@ -61,7 +52,6 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataViewModel.numberOfCells
     }
@@ -73,15 +63,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
         cellVM.retrieveImage { image, error in
             DispatchQueue.main.sync {
-                
                 cell.picture.image = image
-                //                cell.imageView!.image = image
             }
-
-            
         }
 
-//        cell.picture.imageFromUrl(urlString: cellVM.imageUrl)
         cell.name.text = cellVM.name
         cell.info.text = cellVM.info
         cell.backgroundColor = UIColor.cyan
@@ -90,10 +75,8 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         let cellVM = dataViewModel.getCellViewModel( at: indexPath )
 
-        print("didSelectItem \(cellVM.name)")
         let detailsViewController = DetailsViewController(nibName: "\(DetailsViewController.self)", bundle: nil)
         detailsViewController.pokemon = cellVM
         detailsViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
