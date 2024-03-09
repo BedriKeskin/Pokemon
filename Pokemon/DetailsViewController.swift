@@ -17,10 +17,13 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
 
         if let pokemon = pokemon {
-            Image.imageFromUrl(urlString: pokemon.imageUrl)
-            //        Image.image = UIImage(data: (pokemon?.imageData)!)
+            pokemon.retrieveImage { image, error in
+                DispatchQueue.main.sync {
+                    self.Image.image = image
+                }
+            }
+
             Info.text = pokemon.info
         }
-
     }
 }
