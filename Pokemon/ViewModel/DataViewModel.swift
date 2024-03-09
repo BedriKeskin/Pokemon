@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class DataViewModel {
-
     var datas: [Pokemon] = [Pokemon]()
     var reloadTableView: (()->())?
     var showError: (()->())?
@@ -22,7 +21,7 @@ class DataViewModel {
         }
     }
 
-    func getData(){
+    func getData() {
         showLoading?()
         ApiClient.getDataFromServer { rslt in
             DispatchQueue.main.async {

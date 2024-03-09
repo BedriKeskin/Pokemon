@@ -11,11 +11,11 @@ final class TableViewCell: UITableViewCell {
     @IBOutlet var picture: UIImageView!
     @IBOutlet var name: UILabel!
     @IBOutlet var info: UILabel!
-    
-    static let cellIdentifier = "cellIdentifier";
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
+    //    static let cellIdentifier = "cellIdentifier";
+    //
+    //    override func awakeFromNib() {
+    //        super.awakeFromNib()
+    //
+    //    }
 }

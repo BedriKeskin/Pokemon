@@ -28,18 +28,4 @@ struct Pokemon: Decodable {
         info = try container.decode(String.self, forKey: .description)
         imageUrl = try container.decode(String.self, forKey: .imageUrl)
     }
-
-    func imageFromUrl(urlString: String) -> Data? {
-        print("ffffff")
-        var imageData: Data?
-        if let url = URL(string: urlString) {
-            let _: Void = URLSession.shared.dataTask(with: url) { data, response, error in
-                print("ffffff error \(error)")
-                guard let data = data, error == nil else { return }
-                print("ffffff data \(data)")
-                imageData = data
-            }.resume()
-        }
-        return imageData
-    }
 }
