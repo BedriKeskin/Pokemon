@@ -11,7 +11,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet var Image: UIImageView!
     @IBOutlet var Info: UILabel!
     
-    var pokemon: Pokemon? = nil
+    var pokemon: DataListCellViewModel? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()

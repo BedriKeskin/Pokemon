@@ -14,8 +14,6 @@ final class TableViewCell: UITableViewCell {
     
     static let cellIdentifier = "cellIdentifier";
 
-    weak var delegate: CustomDelegate?
-
     override func awakeFromNib() {
         super.awakeFromNib()
 
