@@ -11,12 +11,7 @@ struct Pokemon: Decodable {
     let id: Int8
     let name: String
     let info: String
-    var imageUrl: String = "" {
-        willSet {
-            imageData = imageFromUrl(urlString: newValue)
-        }
-    }
-    var imageData: Data?
+    let imageUrl: String
 
     private enum CodingKeys: CodingKey {
         case id
@@ -35,10 +30,13 @@ struct Pokemon: Decodable {
     }
 
     func imageFromUrl(urlString: String) -> Data? {
+        print("ffffff")
         var imageData: Data?
         if let url = URL(string: urlString) {
             let _: Void = URLSession.shared.dataTask(with: url) { data, response, error in
+                print("ffffff error \(error)")
                 guard let data = data, error == nil else { return }
+                print("ffffff data \(data)")
                 imageData = data
             }.resume()
         }

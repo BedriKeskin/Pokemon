@@ -20,7 +20,6 @@ class MainViewController: UIViewController {
             self.tableView.dataSource = self
             self.tableView.delegate = self
             self.tableView.reloadData()
-            print("zzzzz Pokemons could not be fetched:")
         }
 
         initViewModel()
@@ -72,7 +71,17 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
         let cellVM = dataViewModel.getCellViewModel( at: indexPath )
 
-        cell.picture.imageFromUrl(urlString: cellVM.imageUrl)
+        cellVM.retrieveImage { image, error in
+            DispatchQueue.main.sync {
+                
+                cell.picture.image = image
+                //                cell.imageView!.image = image
+            }
+
+            
+        }
+
+//        cell.picture.imageFromUrl(urlString: cellVM.imageUrl)
         cell.name.text = cellVM.name
         cell.info.text = cellVM.info
         cell.backgroundColor = UIColor.cyan

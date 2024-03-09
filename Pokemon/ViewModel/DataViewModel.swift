@@ -30,8 +30,7 @@ class DataViewModel {
                 case .success(let response):
                     self.createCell(datas: response)
                     self.reloadTableView?()
-                    print("xxx Pokemons could not be fetched")
-
+                    print("DataViewModel getData Pokemons fetched")
                 case .failure(let error):
                     print("Pokemons could not be fetched: \(error)")
                 }
@@ -61,6 +60,17 @@ struct DataListCellViewModel {
     let id: Int8
     let name: String
     let info: String
-    var imageUrl: String
-    var imageData: Data?
+    let imageUrl: String
+
+    func retrieveImage(completionHandler: @escaping (UIImage?, Error?) -> Void) {
+        if let url = URL(string: imageUrl) {
+            let _: Void = URLSession.shared.dataTask(with: url) { data, response, error in
+                guard let data = data, error == nil else {
+                    completionHandler(nil, error)
+                    return
+                }
+                completionHandler(UIImage(data: data), nil)
+            }.resume()
+        }
+    }
 }
