@@ -134,10 +134,8 @@
 			children = (
 				0A85EC352B570F3400D18991 /* AppDelegate.swift */,
 				0A85EC372B570F3400D18991 /* SceneDelegate.swift */,
-				0AE3F3042B9C0E9B00FC32C0 /* Network */,
-				0AE3F30B2B9C69AD00FC32C0 /* Extensions */,
-				0AE3F3032B9C0E7600FC32C0 /* ViewModel */,
 				0AE3F3022B9C0E6500FC32C0 /* View */,
+				0AE3F3032B9C0E7600FC32C0 /* ViewModel */,
 				0AE3F3012B9C0E5B00FC32C0 /* Model */,
 				0A0B9A7D2B6BC63F00DC4EDC /* MainViewController.xib */,
 				0A735CB92B60570B00045FAB /* DetailsViewController.swift */,
@@ -145,6 +143,8 @@
 				0A0CF6122B59D47400084880 /* TableViewController.xib */,
 				0AA5ECDB2B57475000CE2B17 /* TableViewCell.swift */,
 				0AA5ECDC2B57475000CE2B17 /* TableViewCell.xib */,
+				0AE3F3042B9C0E9B00FC32C0 /* Network */,
+				0AE3F30B2B9C69AD00FC32C0 /* Extensions */,
 				0A85EC3E2B570F3A00D18991 /* Assets.xcassets */,
 				0A85EC432B570F3A00D18991 /* Info.plist */,
 			);

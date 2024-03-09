@@ -30,6 +30,8 @@ class DataViewModel {
                 case .success(let response):
                     self.createCell(datas: response)
                     self.reloadTableView?()
+                    print("xxx Pokemons could not be fetched")
+
                 case .failure(let error):
                     print("Pokemons could not be fetched: \(error)")
                 }

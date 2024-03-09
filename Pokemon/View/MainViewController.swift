@@ -10,17 +10,26 @@ import Foundation
 
 class MainViewController: UIViewController {
     var dataViewModel = DataViewModel()
+    var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if let tableView = Bundle.main.loadNibNamed("TableViewController", owner: self, options: nil)?.first as? UITableView {
+            self.tableView = tableView
+            self.tableView.dataSource = self
+            self.tableView.delegate = self
+            self.tableView.reloadData()
+            print("zzzzz Pokemons could not be fetched:")
+        }
+
         initViewModel()
-        self.showTable()
     }
 
     func initViewModel(){
-        //        dataViewModel.reloadTableView = {
-        //            DispatchQueue.main.async { tableViewController.reloadData() }
-        //        }
+                dataViewModel.reloadTableView = {
+                    DispatchQueue.main.async { self.tableView.reloadData() }
+                }
         //        dataViewModel.showError = {
         //            DispatchQueue.main.async { self.showAlert("Ups, something went wrong.") }
         //        }
@@ -39,12 +48,7 @@ class MainViewController: UIViewController {
     //
     //    }
 
-    private func showTable() {
-        if let tableView = Bundle.main.loadNibNamed("TableViewController", owner: self, options: nil)?.first as? UITableView {
-            tableView.dataSource = self
-//            tableView.delegate = self
-        }
-    }
+
 
     func getTopMostViewController() -> UIViewController? {
         var topMostViewController = UIApplication.shared.keyWindow?.rootViewController
@@ -57,7 +61,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UITableViewDataSource {
+extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataViewModel.numberOfCells
