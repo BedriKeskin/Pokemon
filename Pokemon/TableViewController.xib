@@ -19,8 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <viewLayoutGuide key="safeArea" id="vLr-E1-eTs"/>
-            <color key="backgroundColor" systemColor="systemYellowColor"/>
-            <color key="sectionIndexBackgroundColor" red="0.26738187949999997" green="0.32641239599999999" blue="0.41849954220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <connections>
                 <outlet property="delegate" destination="-1" id="dkp-Ug-h0n"/>
             </connections>
@@ -28,8 +27,8 @@
         </tableView>
     </objects>
     <resources>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

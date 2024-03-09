@@ -11,22 +11,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let scene = (scene as? UIWindowScene) else { return }
-        self.window = UIWindow(windowScene: scene)
-        let mainVC = MainViewController(nibName: "MainViewController", bundle: nil)
-        let navigationController = UINavigationController(rootViewController: mainVC)
 
-//        let detailsVC = DetailsViewController(nibName: "DetailsViewController", bundle: nil)
+        if let windowScene = scene as? UIWindowScene {
 
-//        navigationController.viewControllers = [detailsVC, mainVC]
+            let window = UIWindow(windowScene: windowScene)
+            let mainViewController = MainViewController(nibName: "MainViewController", bundle: nil)
+            mainViewController.title = "Pokemon"
+            let navigationController = UINavigationController(rootViewController: mainViewController)
+            navigationController.navigationBar.backgroundColor = UIColor(red: 88/255, green: 86/255, blue: 206/255, alpha: 1)
+            window.rootViewController = navigationController
+            self.window = window
+            window.makeKeyAndVisible()
 
-        self.window!.rootViewController = navigationController
-        self.window?.makeKeyAndVisible()
+            let height = (navigationController.navigationBar.frame.size.height)
+            let width = (navigationController.navigationBar.frame.size.width)
 
+            let button = UIButton(frame: CGRect(x: width-width/5, y: 0, width: width/5, height: height))
+            button.backgroundColor = .red
+            button.tintColor = .white
+            button.setTitle("Switch to\nSwiftUI", for: .normal)
+            button.addTarget(self, action: #selector(change), for: .touchUpInside)
+            navigationController.navigationBar.addSubview(button)
+        }
+    }
 
-
+    @objc func change () {
+        print("aaaaa")
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

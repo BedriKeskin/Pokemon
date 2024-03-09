@@ -17,6 +17,8 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
 
         if let pokemon = pokemon {
+            self.title = pokemon.name
+
             pokemon.retrieveImage { image, error in
                 DispatchQueue.main.sync {
                     self.Image.image = image

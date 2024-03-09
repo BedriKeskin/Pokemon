@@ -22,7 +22,21 @@ class MainViewController: UIViewController {
         }
 
         initViewModel()
+
+//        let height = (self.navigationController?.navigationBar.frame.size.height)!
+//        let width = (self.navigationController?.navigationBar.frame.size.width)!
+//
+//        let button = UIButton(frame: CGRect(x: width-width/5, y: 0, width: width/5, height: height))
+//        button.backgroundColor = .red
+//        button.tintColor = .white
+//        button.setTitle("Switch to\nSwiftUI", for: .normal)
+//        button.addTarget(self, action: #selector(change), for: .touchUpInside)
+//        self.navigationController!.navigationBar.addSubview(button)
     }
+
+//    @objc func change () {
+//        print("aaaaa")
+//    }
 
     func initViewModel() {
         dataViewModel.reloadTableView = {
@@ -38,16 +52,6 @@ class MainViewController: UIViewController {
         //            DispatchQueue.main.async { self.activityIndicator.stopAnimating() }
         //        }
         dataViewModel.getData()
-    }
-
-    func getTopMostViewController() -> UIViewController? {
-        var topMostViewController = UIApplication.shared.keyWindow?.rootViewController
-
-        while let presentedViewController = topMostViewController?.presentedViewController {
-            topMostViewController = presentedViewController
-        }
-
-        return topMostViewController
     }
 }
 
@@ -69,19 +73,14 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
         cell.name.text = cellVM.name
         cell.info.text = cellVM.info
-        cell.backgroundColor = UIColor.cyan
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellVM = dataViewModel.getCellViewModel( at: indexPath )
-
         let detailsViewController = DetailsViewController(nibName: "\(DetailsViewController.self)", bundle: nil)
-        detailsViewController.pokemon = cellVM
+        detailsViewController.pokemon = dataViewModel.getCellViewModel( at: indexPath )
         detailsViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-        DispatchQueue.main.async {
-            self.getTopMostViewController()?.present(detailsViewController, animated: true, completion: nil)
-        }
+        self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }
