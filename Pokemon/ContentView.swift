@@ -10,19 +10,13 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.dismiss) private var dismiss
 
+    @ObservedObject var apiClient = ApiClient()
+
     @StateObject var dataViewModel = DataViewModel()
-
-
 
     var body: some View {
         NavigationStack {
             Text("SwiftUI")
-//            List(networkManager.movies.results) { movie in
-//                NavigationLink(destination: MovieDetails(movie: movie)){
-//                    MovieRow(movie: movie)
-//                }
-//            }
-
                 .toolbar {
                     Button("UIKit")
                     {
@@ -34,6 +28,18 @@ struct ContentView: View {
                 .navigationTitle("Pokemon")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(.orange, for: .navigationBar, .tabBar)
+
+
+            if apiClient.loading {
+                Text("Loading ...")
+            } else {
+                Text("x pokemons \(apiClient.pokemons.results.count )")
+                List(apiClient.pokemons.results) { pokemon in
+//                    NavigationLink(destination: MovieDetails(movie: movie)){
+//                        MovieRow(movie: movie)
+//                    }
+                }
+            }
         }
         .tabItem {
             Label("Rows", systemImage: "list.bullet")

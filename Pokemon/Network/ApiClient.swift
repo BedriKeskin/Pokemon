@@ -7,13 +7,31 @@
 
 import Foundation
 
-public class ApiClient {
+public class ApiClient: ObservableObject {
     @Published var pokemons = Pokemons(results: [])
     @Published var loading = false
 
-    static let serverURL = "https://gist.githubusercontent.com/DavidCorrado/8912aa29d7c4a5fbf03993b32916d601/raw/681ef0b793ab444f2d81f04f605037fb44814125/pokemon.json"
+    let serverURL = "https://gist.githubusercontent.com/DavidCorrado/8912aa29d7c4a5fbf03993b32916d601/raw/681ef0b793ab444f2d81f04f605037fb44814125/pokemon.json"
 
-    static func getDataFromServer(completion: @escaping(Result<[Pokemon], Error>) -> Void) {
+    init() {
+        loading = true
+        getDataFromServer{ rslt in
+            DispatchQueue.main.async {
+                switch rslt {
+                case .success(let response):
+                    DispatchQueue.main.async {
+                        self.pokemons = Pokemons(results: response)
+                        print("aaa self.pokemons \(self.pokemons)")
+                        self.loading = false
+                    }
+                case .failure(let error):
+                    print("Pokemons could not be fetched: \(error)")
+                }
+            }
+        }
+    }
+
+    func getDataFromServer(completion: @escaping(Result<[Pokemon], Error>) -> Void) {
         guard let url = URL(string: serverURL) else { return }
 
         var request = URLRequest(url: (url))
@@ -23,6 +41,7 @@ public class ApiClient {
             if let data = data, error == nil {
                 do {
                     let result = try JSONDecoder().decode([Pokemon].self, from: data)
+
                     completion(.success(result))
                 } catch {
                     completion(.failure(error))

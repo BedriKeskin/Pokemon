@@ -23,7 +23,7 @@ class DataViewModel: ObservableObject {
 
     func getData() {
         showLoading?()
-        ApiClient.getDataFromServer { rslt in
+        ApiClient().getDataFromServer { rslt in
             DispatchQueue.main.async {
                 switch rslt {
                 case .success(let response):
