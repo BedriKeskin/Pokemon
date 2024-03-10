@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -30,14 +31,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let button = UIButton(frame: CGRect(x: width-width/5, y: 0, width: width/5, height: height))
             button.backgroundColor = .red
             button.tintColor = .white
-            button.setTitle("Switch to\nSwiftUI", for: .normal)
-            button.addTarget(self, action: #selector(change), for: .touchUpInside)
+            button.setTitle("Switch", for: .normal)
+            button.addTarget(self, action: #selector(change(_:)), for: .touchUpInside)
             navigationController.navigationBar.addSubview(button)
         }
     }
 
-    @objc func change () {
-        print("aaaaa")
+    @objc func change(_ sender: UIButton) {
+
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+
+            let vc = UIHostingController(rootView: ContentView())
+            vc.modalPresentationStyle = .fullScreen
+
+            strongSelf.window?.rootViewController?.present(vc, animated: true, completion: nil)
+
+        }
+
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
