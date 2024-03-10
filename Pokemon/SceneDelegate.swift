@@ -31,14 +31,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let button = UIButton(frame: CGRect(x: width-width/5, y: 0, width: width/5, height: height))
             button.backgroundColor = .red
             button.tintColor = .white
-            button.setTitle("Switch", for: .normal)
+            button.setTitle("SwiftUI", for: .normal)
             button.addTarget(self, action: #selector(change(_:)), for: .touchUpInside)
             navigationController.navigationBar.addSubview(button)
         }
     }
 
     @objc func change(_ sender: UIButton) {
-
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else { return }
 
@@ -46,10 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             vc.modalPresentationStyle = .fullScreen
 
             strongSelf.window?.rootViewController?.present(vc, animated: true, completion: nil)
-
         }
-
-
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -29,3 +29,7 @@ struct Pokemon: Decodable {
         imageUrl = try container.decode(String.self, forKey: .imageUrl)
     }
 }
+
+struct Pokemons: Decodable {
+    var results: [Pokemon]
+}

@@ -8,14 +8,36 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    @StateObject var dataViewModel = DataViewModel()
+
+
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            Text("SwiftUI")
+//            List(networkManager.movies.results) { movie in
+//                NavigationLink(destination: MovieDetails(movie: movie)){
+//                    MovieRow(movie: movie)
+//                }
+//            }
+
+                .toolbar {
+                    Button("UIKit")
+                    {
+                        dismiss()
+                    }
+                    .background(Color.red)
+                    .tint(Color.white)
+                }
+                .navigationTitle("Pokemon")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbarBackground(.orange, for: .navigationBar, .tabBar)
         }
-        .padding()
+        .tabItem {
+            Label("Rows", systemImage: "list.bullet")
+        }
     }
 }
 

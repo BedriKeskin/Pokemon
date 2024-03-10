@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class DataViewModel {
+class DataViewModel: ObservableObject {
     var datas: [Pokemon] = [Pokemon]()
     var reloadTableView: (()->())?
     var showError: (()->())?
@@ -27,7 +27,9 @@ class DataViewModel {
             DispatchQueue.main.async {
                 switch rslt {
                 case .success(let response):
-                    self.createCell(datas: response)
+                    self.datas = response
+
+                    self.createCell()
                     self.reloadTableView?()
                 case .failure(let error):
                     print("Pokemons could not be fetched: \(error)")
@@ -44,10 +46,9 @@ class DataViewModel {
         return cellViewModels[indexPath.row]
     }
 
-    func createCell(datas: [Pokemon]){
-        self.datas = datas
+    func createCell(){
         var vms = [DataListCellViewModel]()
-        for data in datas {
+        for data in self.datas {
             vms.append(DataListCellViewModel(id: data.id, name: data.name, info: data.info, imageUrl: data.imageUrl))
         }
         cellViewModels = vms
