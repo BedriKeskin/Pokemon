@@ -63,7 +63,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
 
-        let cellVM = dataViewModel.getCellViewModel( at: indexPath )
+        let cellVM = dataViewModel.getCellViewModel(at: indexPath )
 
         cellVM.retrieveImage { image, error in
             DispatchQueue.main.sync {

@@ -12,27 +12,15 @@ struct ListItem : View {
 
     var body: some View {
         HStack {
-
             VStack {
-                Spacer()
                 HStack {
-                    Text(pokemon.name)
-                        .foregroundColor(.blue)
-                        .lineLimit(nil)
-                    Spacer()
-                }
-                HStack {
-                    Text(pokemon.info).foregroundColor(.gray)
-                    Spacer()
-                    Text("Rate: \(pokemon.imageUrl)")
-                }
-                HStack {
-                    Text("Vote count: \(pokemon.id)")
-                        .foregroundColor(.gray)
-                        .lineLimit(nil)
-                    Spacer()
+                    AsyncImage(url: URL(string: pokemon.imageUrl))
+                    VStack {
+                        Text(pokemon.name).bold()
+                        Text(pokemon.info)
+                    }
                 }
             }
-        }.frame(height: 130)
+        }
     }
 }

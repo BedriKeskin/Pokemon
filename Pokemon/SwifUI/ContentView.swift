@@ -16,7 +16,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            Text("SwiftUI")
+            Text("")
                 .toolbar {
                     Button("UIKit")
                     {
@@ -29,20 +29,15 @@ struct ContentView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(.orange, for: .navigationBar, .tabBar)
 
-
             if apiClient.loading {
                 Text("Loading ...")
             } else {
-                Text("x pokemons \(apiClient.pokemons.results.count )")
                 List(apiClient.pokemons.results) { pokemon in
                     NavigationLink(destination: Details(pokemon: pokemon)){
                         ListItem(pokemon: pokemon)
                     }
                 }
             }
-        }
-        .tabItem {
-            Label("Rows", systemImage: "list.bullet")
         }
     }
 }
