@@ -35,9 +35,9 @@ struct ContentView: View {
             } else {
                 Text("x pokemons \(apiClient.pokemons.results.count )")
                 List(apiClient.pokemons.results) { pokemon in
-//                    NavigationLink(destination: MovieDetails(movie: movie)){
-//                        MovieRow(movie: movie)
-//                    }
+                    NavigationLink(destination: Details(pokemon: pokemon)){
+                        ListItem(pokemon: pokemon)
+                    }
                 }
             }
         }
