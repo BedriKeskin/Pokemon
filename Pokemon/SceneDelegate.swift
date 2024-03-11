@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             let window = UIWindow(windowScene: windowScene)
             let mainViewController = MainViewController(nibName: "MainViewController", bundle: nil)
-            mainViewController.title = "Pokemon"
+            mainViewController.title = "Pokémon"
             let navigationController = UINavigationController(rootViewController: mainViewController)
             navigationController.navigationBar.backgroundColor = UIColor(red: 88/255, green: 86/255, blue: 206/255, alpha: 1)
             window.rootViewController = navigationController

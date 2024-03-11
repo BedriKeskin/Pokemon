@@ -9,11 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.dismiss) private var dismiss
-
     @ObservedObject var apiClient = ApiClient()
-
-    @StateObject var dataViewModel = DataViewModel()
-
+    
     var body: some View {
         NavigationStack {
             Text("")
@@ -25,7 +22,7 @@ struct ContentView: View {
                     .background(Color.red)
                     .tint(Color.white)
                 }
-                .navigationTitle("Pokemon")
+                .navigationTitle("Pokémon")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(.orange, for: .navigationBar, .tabBar)
 
@@ -33,9 +30,9 @@ struct ContentView: View {
                 Text("Loading ...")
             } else {
                 List(apiClient.pokemons.results) { pokemon in
-                    NavigationLink(destination: Details(pokemon: pokemon)){
-                        ListItem(pokemon: pokemon)
-                    }
+                    ListItem(pokemon: pokemon)
+                        .background(NavigationLink("", destination: Details(pokemon: pokemon))
+                            .opacity(0)).listRowSeparator(.hidden)
                 }
             }
         }

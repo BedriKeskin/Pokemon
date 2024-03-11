@@ -12,14 +12,10 @@ struct ListItem : View {
 
     var body: some View {
         HStack {
-            VStack {
-                HStack {
-                    AsyncImage(url: URL(string: pokemon.imageUrl))
-                    VStack {
-                        Text(pokemon.name).bold()
-                        Text(pokemon.info)
-                    }
-                }
+            AsyncImage(url: URL(string: pokemon.imageUrl))
+            VStack (alignment: .leading) {
+                Text(pokemon.name).bold()
+                Text(pokemon.info)
             }
         }
     }

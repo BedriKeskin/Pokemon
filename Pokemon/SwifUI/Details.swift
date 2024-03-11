@@ -14,6 +14,7 @@ struct Details : View {
         VStack {
             AsyncImage(url: URL(string: pokemon.imageUrl))
             Text(pokemon.info).padding()
+            Spacer()
         }.navigationBarTitle(Text(pokemon.name), displayMode: .inline)
     }
 }
