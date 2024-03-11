@@ -23,6 +23,9 @@ class DetailsViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
 
+        self.navigationItem.rightBarButtonItem?.isEnabled = false;
+
+
         if let pokemon = pokemon {
             self.title = pokemon.name
 

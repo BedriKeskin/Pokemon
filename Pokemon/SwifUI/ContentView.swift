@@ -32,7 +32,7 @@ struct ContentView: View {
                     Button(action: {
                         dismiss()
                     }, label: {
-                        Text("Swicth to\nUIKit").fixedSize(horizontal: false, vertical: true).multilineTextAlignment(.leading)
+                        Image(systemName: "swift")
                     })
                 }
             }

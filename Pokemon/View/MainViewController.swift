@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import SwiftUI
 
 class MainViewController: UIViewController {
     var dataViewModel = DataViewModel()
@@ -22,6 +23,12 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
 
+        let buttonStwichToSwiftUI = UIBarButtonItem(image: UIImage(systemName: "swift"),
+                                           style: UIBarButtonItem.Style.plain ,
+                                           target: self, action: #selector(self.stwichToSwiftUI(_:)))
+        buttonStwichToSwiftUI.tintColor = .green
+        self.navigationItem.rightBarButtonItem = buttonStwichToSwiftUI
+
         if let tableView = Bundle.main.loadNibNamed("TableViewController", owner: self, options: nil)?.first as? UITableView {
             self.tableView = tableView
             self.tableView.dataSource = self
@@ -29,21 +36,16 @@ class MainViewController: UIViewController {
         }
 
         initViewModel()
-
-//        let height = (self.navigationController?.navigationBar.frame.size.height)!
-//        let width = (self.navigationController?.navigationBar.frame.size.width)!
-//
-//        let button = UIButton(frame: CGRect(x: width-width/5, y: 0, width: width/5, height: height))
-//        button.backgroundColor = .red
-//        button.tintColor = .white
-//        button.setTitle("Switch to\nSwiftUI", for: .normal)
-//        button.addTarget(self, action: #selector(change), for: .touchUpInside)
-//        self.navigationController!.navigationBar.addSubview(button)
     }
 
-//    @objc func change () {
-//        print("aaaaa")
-//    }
+    @objc func stwichToSwiftUI(_ sender: UIButton) {
+        DispatchQueue.main.async { [weak self] in
+            let vc = UIHostingController(rootView: ContentView())
+            vc.modalPresentationStyle = .fullScreen
+
+            self?.present(vc, animated: true, completion: nil)
+        }
+    }
 
     func initViewModel() {
         dataViewModel.reloadTableView = {

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -22,26 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = navigationController
             self.window = window
             window.makeKeyAndVisible()
-
-            let height = (navigationController.navigationBar.frame.size.height)
-            let width = (navigationController.navigationBar.frame.size.width)
-
-            let button = UIButton(frame: CGRect(x: width-width/3, y: 0, width: width/3, height: height))
-            button.setTitle("Swicth to\nSwiftUI", for: .normal)
-            button.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping;
-            button.addTarget(self, action: #selector(change(_:)), for: .touchUpInside)
-            navigationController.navigationBar.addSubview(button)
-        }
-    }
-
-    @objc func change(_ sender: UIButton) {
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else { return }
-
-            let vc = UIHostingController(rootView: ContentView())
-            vc.modalPresentationStyle = .fullScreen
-
-            strongSelf.window?.rootViewController?.present(vc, animated: true, completion: nil)
         }
     }
 
