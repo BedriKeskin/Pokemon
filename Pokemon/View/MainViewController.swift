@@ -83,6 +83,8 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         cell.name.text = cellVM.name
         cell.info.text = cellVM.info
 
+        cell.selectionStyle = .none
+
         return cell
     }
 
