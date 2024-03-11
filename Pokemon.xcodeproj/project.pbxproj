@@ -149,11 +149,11 @@
 				0A0CF6122B59D47400084880 /* TableViewController.xib */,
 				0AA5ECDC2B57475000CE2B17 /* TableViewCell.xib */,
 				0A735CBA2B60570B00045FAB /* DetailsViewController.xib */,
-				0AE3F3042B9C0E9B00FC32C0 /* Network */,
-				0AE3F30B2B9C69AD00FC32C0 /* Extensions */,
 				0AAEB1972B9E3E2600999437 /* SwifUI */,
 				0A85EC3E2B570F3A00D18991 /* Assets.xcassets */,
 				0A85EC432B570F3A00D18991 /* Info.plist */,
+				0AE3F3052B9C0F4500FC32C0 /* ApiClient.swift */,
+				0AE3F30C2B9C69DC00FC32C0 /* Extensions.swift */,
 				0ACFCD682B9EF4AF00983EB9 /* Globals.swift */,
 			);
 			path = Pokemon;
@@ -210,22 +210,6 @@
 				0AE3F3092B9C551800FC32C0 /* DataViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		0AE3F3042B9C0E9B00FC32C0 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				0AE3F3052B9C0F4500FC32C0 /* ApiClient.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		0AE3F30B2B9C69AD00FC32C0 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				0AE3F30C2B9C69DC00FC32C0 /* Extensions.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		9BAD2C82AE638B867C271755 /* Frameworks */ = {

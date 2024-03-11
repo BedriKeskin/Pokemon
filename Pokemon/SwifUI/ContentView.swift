@@ -32,7 +32,7 @@ struct ContentView: View {
                     Button(action: {
                         dismiss()
                     }, label: {
-                        Image(systemName: "swift")
+                        Image(systemName: "swift").tint(.blue)
                     })
                 }
             }

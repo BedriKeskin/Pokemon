@@ -27,7 +27,7 @@ class MainViewController: UIViewController {
         let buttonStwichToSwiftUI = UIBarButtonItem(image: UIImage(systemName: "swift"),
                                                     style: UIBarButtonItem.Style.plain ,
                                                     target: self, action: #selector(self.stwichToSwiftUI(_:)))
-        buttonStwichToSwiftUI.tintColor = .green
+        buttonStwichToSwiftUI.tintColor = .red
         self.navigationItem.rightBarButtonItem = buttonStwichToSwiftUI
 
         if let tableView = Bundle.main.loadNibNamed("TableViewController", owner: self, options: nil)?.first as? UITableView {
