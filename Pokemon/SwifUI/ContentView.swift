@@ -10,10 +10,20 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var apiClient = ApiClient()
-    
+
     var body: some View {
         NavigationStack {
-            Text("")
+            if apiClient.loading {
+                Text("Loading ...")
+            } else {
+                List(apiClient.pokemons.results) { pokemon in
+                    ListItem(pokemon: pokemon)
+                        .background(NavigationLink("", destination: Details(pokemon: pokemon)).opacity(0))
+                        .listRowSeparator(.hidden)
+
+                }
+                .listStyle(PlainListStyle())
+
                 .toolbar {
                     Button("UIKit")
                     {
@@ -22,18 +32,10 @@ struct ContentView: View {
                     .background(Color.red)
                     .tint(Color.white)
                 }
-                .navigationTitle("Pokémon")
+                .navigationTitle(Globals.title)
                 .navigationBarTitleDisplayMode(.inline)
-                .toolbarBackground(.orange, for: .navigationBar, .tabBar)
-
-            if apiClient.loading {
-                Text("Loading ...")
-            } else {
-                List(apiClient.pokemons.results) { pokemon in
-                    ListItem(pokemon: pokemon)
-                        .background(NavigationLink("", destination: Details(pokemon: pokemon))
-                            .opacity(0)).listRowSeparator(.hidden)
-                }
+                .toolbarBackground(Color.init(Globals.topBarColor), for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
             }
         }
     }

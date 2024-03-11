@@ -15,6 +15,9 @@ struct Details : View {
             AsyncImage(url: URL(string: pokemon.imageUrl))
             Text(pokemon.info).padding()
             Spacer()
-        }.navigationBarTitle(Text(pokemon.name), displayMode: .inline)
+        }
+        .navigationBarTitle(Text(pokemon.name), displayMode: .inline)
+        .toolbarBackground(Color.init(Globals.topBarColor), for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
     }
 }
