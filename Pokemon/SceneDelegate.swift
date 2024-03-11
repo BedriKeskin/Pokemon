@@ -28,10 +28,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let height = (navigationController.navigationBar.frame.size.height)
             let width = (navigationController.navigationBar.frame.size.width)
 
-            let button = UIButton(frame: CGRect(x: width-width/5, y: 0, width: width/5, height: height))
-            button.backgroundColor = .red
-            button.tintColor = .white
-            button.setTitle("SwiftUI", for: .normal)
+            let button = UIButton(frame: CGRect(x: width-width/2, y: 0, width: width/2, height: height))
+//            button.backgroundColor = .red
+//            button.tintColor = .white
+            button.setTitle("Swicth to SwiftUI", for: .normal)
             button.addTarget(self, action: #selector(change(_:)), for: .touchUpInside)
             navigationController.navigationBar.addSubview(button)
         }

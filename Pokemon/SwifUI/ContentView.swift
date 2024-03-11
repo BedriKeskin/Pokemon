@@ -20,22 +20,20 @@ struct ContentView: View {
                     ListItem(pokemon: pokemon)
                         .background(NavigationLink("", destination: Details(pokemon: pokemon)).opacity(0))
                         .listRowSeparator(.hidden)
-
                 }
                 .listStyle(PlainListStyle())
 
-                .toolbar {
-                    Button("UIKit")
-                    {
-                        dismiss()
-                    }
-                    .background(Color.red)
-                    .tint(Color.white)
-                }
                 .navigationTitle(Globals.title)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(Color.init(Globals.topBarColor), for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
+
+                .toolbar {
+                    Button("Swicth to UIKit")
+                    {
+                        dismiss()
+                    }
+                }
             }
         }
     }
