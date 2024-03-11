@@ -19,7 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let mainViewController = MainViewController(nibName: "MainViewController", bundle: nil)
             mainViewController.title = Globals.title
             let navigationController = UINavigationController(rootViewController: mainViewController)
-            navigationController.navigationBar.backgroundColor = Globals.topBarColor
             window.rootViewController = navigationController
             self.window = window
             window.makeKeyAndVisible()
