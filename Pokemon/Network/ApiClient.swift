@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 public class ApiClient: ObservableObject {
     @Published var pokemons = Pokemons(results: [])

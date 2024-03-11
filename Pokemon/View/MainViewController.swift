@@ -12,6 +12,7 @@ import SwiftUI
 class MainViewController: UIViewController {
     var dataViewModel = DataViewModel()
     var tableView: UITableView!
+    var activityIndicator = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,8 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
 
         let buttonStwichToSwiftUI = UIBarButtonItem(image: UIImage(systemName: "swift"),
-                                           style: UIBarButtonItem.Style.plain ,
-                                           target: self, action: #selector(self.stwichToSwiftUI(_:)))
+                                                    style: UIBarButtonItem.Style.plain ,
+                                                    target: self, action: #selector(self.stwichToSwiftUI(_:)))
         buttonStwichToSwiftUI.tintColor = .green
         self.navigationItem.rightBarButtonItem = buttonStwichToSwiftUI
 
@@ -51,15 +52,15 @@ class MainViewController: UIViewController {
         dataViewModel.reloadTableView = {
             DispatchQueue.main.async { self.tableView.reloadData() }
         }
-        //        dataViewModel.showError = {
-        //            DispatchQueue.main.async { self.showAlert("Ups, something went wrong.") }
-        //        }
-        //        dataViewModel.showLoading = {
-        //            DispatchQueue.main.async { self.activityIndicator.startAnimating() }
-        //        }
-        //        dataViewModel.hideLoading = {
-        //            DispatchQueue.main.async { self.activityIndicator.stopAnimating() }
-        //        }
+        dataViewModel.showError = {
+            DispatchQueue.main.async { self.showAlert("Something went wrong.") }
+        }
+        dataViewModel.showLoading = {
+            DispatchQueue.main.async { self.activityIndicator.startAnimating() }
+        }
+        dataViewModel.hideLoading = {
+            DispatchQueue.main.async { self.activityIndicator.stopAnimating() }
+        }
         dataViewModel.getData()
     }
 }

@@ -25,14 +25,15 @@ class DataViewModel: ObservableObject {
         showLoading?()
         ApiClient().getDataFromServer { rslt in
             DispatchQueue.main.async {
+                self.hideLoading?()
+
                 switch rslt {
                 case .success(let response):
                     self.datas = response
-
                     self.createCell()
                     self.reloadTableView?()
                 case .failure(let error):
-                    print("Pokemons could not be fetched: \(error)")
+                    self.showError?()
                 }
             }
         }
