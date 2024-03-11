@@ -11,8 +11,6 @@ public class ApiClient: ObservableObject {
     @Published var pokemons = Pokemons(results: [])
     @Published var loading = false
 
-    let serverURL = "https://gist.githubusercontent.com/DavidCorrado/8912aa29d7c4a5fbf03993b32916d601/raw/681ef0b793ab444f2d81f04f605037fb44814125/pokemon.json"
-
     init() {
         loading = true
         getDataFromServer{ rslt in
@@ -32,7 +30,7 @@ public class ApiClient: ObservableObject {
     }
 
     func getDataFromServer(completion: @escaping(Result<[Pokemon], Error>) -> Void) {
-        guard let url = URL(string: serverURL) else { return }
+        guard let url = URL(string: Globals.serverURL) else { return }
 
         var request = URLRequest(url: (url))
         request.httpMethod = "GET"
