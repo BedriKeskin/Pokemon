@@ -32,7 +32,7 @@ class DataViewModel: ObservableObject {
                     self.datas = response
                     self.createCell()
                     self.reloadTableView?()
-                case .failure(let error):
+                case .failure(_):
                     self.showError?()
                 }
             }

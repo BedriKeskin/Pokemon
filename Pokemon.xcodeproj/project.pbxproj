@@ -142,9 +142,9 @@
 			children = (
 				0A85EC352B570F3400D18991 /* AppDelegate.swift */,
 				0A85EC372B570F3400D18991 /* SceneDelegate.swift */,
-				0AE3F3022B9C0E6500FC32C0 /* View */,
-				0AE3F3032B9C0E7600FC32C0 /* ViewModel */,
 				0AE3F3012B9C0E5B00FC32C0 /* Model */,
+				0AE3F3032B9C0E7600FC32C0 /* ViewModel */,
+				0AE3F3022B9C0E6500FC32C0 /* View */,
 				0A0B9A7D2B6BC63F00DC4EDC /* MainViewController.xib */,
 				0A0CF6122B59D47400084880 /* TableViewController.xib */,
 				0AA5ECDC2B57475000CE2B17 /* TableViewCell.xib */,
