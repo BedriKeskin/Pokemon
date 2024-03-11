@@ -29,10 +29,11 @@ struct ContentView: View {
                 .toolbarBackground(.visible, for: .navigationBar)
 
                 .toolbar {
-                    Button("Swicth to UIKit")
-                    {
+                    Button(action: {
                         dismiss()
-                    }
+                    }, label: {
+                        Text("Swicth to\nUIKit").fixedSize(horizontal: false, vertical: true).multilineTextAlignment(.leading)
+                    })
                 }
             }
         }
