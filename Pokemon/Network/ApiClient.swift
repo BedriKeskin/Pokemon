@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 public class ApiClient: ObservableObject {
     @Published var pokemons = Pokemons(results: [])
@@ -14,15 +13,13 @@ public class ApiClient: ObservableObject {
 
     init() {
         loading = true
-        getDataFromServer{ rslt in
+        getDataFromServer{ result in
             DispatchQueue.main.async {
-                switch rslt {
+                self.loading = false
+
+                switch result {
                 case .success(let response):
-                    DispatchQueue.main.async {
-                        self.pokemons = Pokemons(results: response)
-                        print("aaa self.pokemons \(self.pokemons)")
-                        self.loading = false
-                    }
+                    self.pokemons = Pokemons(results: response)
                 case .failure(let error):
                     print("Pokemons could not be fetched: \(error)")
                 }
@@ -40,7 +37,6 @@ public class ApiClient: ObservableObject {
             if let data = data, error == nil {
                 do {
                     let result = try JSONDecoder().decode([Pokemon].self, from: data)
-
                     completion(.success(result))
                 } catch {
                     completion(.failure(error))

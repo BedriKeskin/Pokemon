@@ -2,7 +2,7 @@
 //  TableViewCell.swift
 //  Pokemon
 //
-//  Created by Bedri Keskin on 17.01.2024.
+//  Created by Tiga on 17.01.2024.
 //
 
 import UIKit

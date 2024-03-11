@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Pokemon
 //
-//  Created by Bedri Keskin on 16.01.2024.
+//  Created by Tiga on 16.01.2024.
 //
 
 import UIKit
@@ -92,7 +92,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsViewController = DetailsViewController(nibName: "\(DetailsViewController.self)", bundle: nil)
         detailsViewController.pokemon = dataViewModel.getCellViewModel( at: indexPath )
-        detailsViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+        detailsViewController.modalPresentationStyle = .fullScreen //.overFullScreen
         self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }

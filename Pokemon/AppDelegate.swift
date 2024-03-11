@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Pokemon
 //
-//  Created by Bedri Keskin on 16.01.2024.
+//  Created by Tiga on 16.01.2024.
 //
 
 import UIKit

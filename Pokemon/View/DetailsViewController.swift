@@ -25,7 +25,6 @@ class DetailsViewController: UIViewController {
 
         self.navigationItem.rightBarButtonItem?.isEnabled = false;
 
-
         if let pokemon = pokemon {
             self.title = pokemon.name
 
